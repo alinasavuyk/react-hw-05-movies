@@ -1,8 +1,7 @@
 import { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieReviews} from '../services/movies-api'
-import { NavLink, Route, useRouteMatch } from 'react-router-dom'
-
+import s from './Review.module.css'
 
 
 export default function Reviews(){
@@ -17,23 +16,20 @@ export default function Reviews(){
       }, [castId]);
     
  return (
-    <div>
-{reviews.map(review => {
-     return   <p key={review.id}>
-{review.content}
-        </p>
-})}
-  
-    </div>
-
-  
+  <div>
+  {reviews.length > 0 ? (
+      <>
+          <ul className={s.list}>
+              {reviews.map((review) => (
+                  <li key={review.id} className={s.item}>
+                      <h2 c>{review.author}</h2>
+                      <p className={ s.desc}>{review.content}</p>
+                  </li>
+              ))}
+          </ul>
+      </>
+  ) : (<p>No Reviews</p>)}
+</div>
  )
    
  }
- /*
-{reviews.map(review => {
-     return   <p key={review.cast_id}>
-{review.content}
-        </p>
-})}
-   */

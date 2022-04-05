@@ -1,0 +1,20 @@
+.actor {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    /* width: 100px; */
+  }
+  
+  .actorItem {
+    margin: 5px;
+    width: 100px;
+  }
+  
+  .actorName {
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .imgActor{
+      width: 100px;
+      height: 150px;
+  }

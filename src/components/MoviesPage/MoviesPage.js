@@ -8,7 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import s from './MoviesPage.module.css'
 import {fetchSearchMovie} from '../services/movies-api'
 
-export default function MoviesPage ({onSubmir}){
+export default function MoviesPage ({onSubmit}){
     const [searchName, setSearchName]=useState('')
     const [data, setData]=useState([])
     const notPhoto = 'https://cdn.pixabay.com/photo/2014/04/02/10/25/man-303792_960_720.png';
@@ -39,7 +39,7 @@ export default function MoviesPage ({onSubmir}){
          toast.error('Введите имя.');
          return;
        }
-       onSubmir(searchName)
+       onSubmit(searchName)
        setSearchName("")
      }
    
@@ -63,43 +63,24 @@ export default function MoviesPage ({onSubmir}){
    </form>
    
    </header>
+   <ul className={s.list}>
 {data &&
         data.map(el => {
           return (
-            <li key={el.id}>
-              <Link to={`/${el.id}`}>
-              <img width={100} src={el.poster_path?`https://image.tmdb.org/t/p/w300${el.poster_path}`:notPhoto} />
-              <h3>{el.original_title}</h3>
+            <li key={el.id} className={s.item}>
+              <Link to={`/${el.id}`} className={s.title}>
+              <img  className={s.image}  
+                             src={el.poster_path?`https://image.tmdb.org/t/p/w300${el.poster_path}`:notPhoto} />
+              <h3 className={s.subtitle}>{el.original_title}</h3>
               </Link>
             </li>
           );
         })}
+         </ul>
            </>
-        
-
    ) }
 
 MoviesPage.propTypes = {
   onSubmit: PropTypes.func,
 };
 
-
-/*export default function MoviesPage() {
-    return (
-     
-<form >
-  <input
-    type="text"
-    autoComplete="off"
-     autoFocus
-   // value={searchName}
-  //  onChange={handleNameChange}
-    placeholder="Search images and photos"
-  />
-  <button type="submit" >
-
-<span >Search</span>
-</button>
-</form>
-    )
-}*/
