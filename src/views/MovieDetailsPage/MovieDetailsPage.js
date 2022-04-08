@@ -1,6 +1,6 @@
 import { useState, useEffect, lazy,Suspense } from 'react';
 import { useParams} from 'react-router-dom';
-import {fetchMovieId} from '../services/movies-api'
+import {fetchMovieId} from '../../components/services/movies-api'
 import { NavLink,Link, Route, Routes,useNavigate} from 'react-router-dom'
 import s from './MovieDetailsPage.module.css'
 

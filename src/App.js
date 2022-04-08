@@ -3,9 +3,9 @@ import {lazy, Suspense} from "react";
 import Navigation from "./components/Navigation/Navigation";
 import s from './app.module.css'
 
-const HomePage=lazy(()=>import('./components/HomePage/HomePage'/*webpackChunkName:'home-page' */))
-const MoviesPage=lazy(()=>import('./components/MoviesPage/MoviesPage' /*webpackChunkName:'movies-page' */))
-const MovieDetailsPage=lazy(()=>import('./components/MovieDetailsPage/MovieDetailsPage'/*webpackChunkName:'details-page' */))
+const HomePage=lazy(()=>import('./views/HomePage/HomePage'/*webpackChunkName:'home-page' */))
+const MoviesPage=lazy(()=>import('./views/MoviesPage/MoviesPage' /*webpackChunkName:'movies-page' */))
+const MovieDetailsPage=lazy(()=>import('./views/MovieDetailsPage/MovieDetailsPage'/*webpackChunkName:'details-page' */))
 
 
 function App() {
@@ -17,8 +17,8 @@ function App() {
     </header>
     <Suspense fallback={<h1>Загрузка...</h1>}>
     <Routes>
-    <Route  path="/" element={<HomePage />} />
-    <Route  path="/:movieId/*" element={<MovieDetailsPage/>} />
+    <Route  path="/react-hw-05-movies" element={<HomePage />} />
+    <Route  path="/react-hw-05-movies/:movieId/*" element={<MovieDetailsPage/>} />
     <Route path="/movies" element={   <MoviesPage  />} />
     </Routes>
     </Suspense>

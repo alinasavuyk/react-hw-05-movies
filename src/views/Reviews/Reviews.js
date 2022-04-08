@@ -1,6 +1,6 @@
 import { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchMovieReviews} from '../services/movies-api'
+import { fetchMovieReviews} from '../../components/services/movies-api'
 import s from './Review.module.css'
 
 

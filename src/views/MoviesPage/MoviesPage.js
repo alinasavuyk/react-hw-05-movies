@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import s from './MoviesPage.module.css'
-import {fetchSearchMovie} from '../services/movies-api'
+import {fetchSearchMovie} from '../../components/services/movies-api'
 
 export default function MoviesPage ({onSubmit}){
     const [searchName, setSearchName]=useState('')
@@ -25,9 +25,7 @@ export default function MoviesPage ({onSubmit}){
          console.log(data.results)
           setData(data.results)           
     })}
-    const handleFormSubmit = searchName => {
-        setSearchName(searchName); 
-      };
+    
 
     const handleNameChange = event => {
      setSearchName(event.currentTarget.value.toLowerCase() );
@@ -68,7 +66,7 @@ export default function MoviesPage ({onSubmit}){
         data.map(el => {
           return (
             <li key={el.id} className={s.item}>
-              <Link to={`/${el.id}`} className={s.title}>
+              <Link to={`/react-hw-05-movies/${el.id}`} className={s.title}>
               <img  className={s.image}  
                              src={el.poster_path?`https://image.tmdb.org/t/p/w300${el.poster_path}`:notPhoto} />
               <h3 className={s.subtitle}>{el.original_title}</h3>
